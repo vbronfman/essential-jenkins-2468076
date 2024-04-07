@@ -23,7 +23,10 @@ pipeline {
     stages {
         stage('Make executable') {
             steps {
+                dir("${env.WORKSPACE}/Ch03/03_03-run-scripts-from-the-pipeline")
  //               sh('chmod +x /scripts/fibonacci.sh')
+                echo "cwd = $CWD"
+                sh 'printenv'
                                sh('chmod +x ./scripts/fibonacci.sh')
             }
         }
