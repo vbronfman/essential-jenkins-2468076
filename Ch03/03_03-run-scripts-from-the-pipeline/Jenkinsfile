@@ -1,9 +1,9 @@
 pipeline {
-//    agent any
-        agent {
+    agent any
+     //   agent {
     // label 'podman-cloud'
-    label 'docker-jnlp||docker-bibi-slave'
-    }
+  //  label 'docker-jnlp||docker-bibi-slave'
+   // }
     parameters {
         choice(name: 'NUMBER',
             choices: [10,20,30,40,50,60,70,80,90],
