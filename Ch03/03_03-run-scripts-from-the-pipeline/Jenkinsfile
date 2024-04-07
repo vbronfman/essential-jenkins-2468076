@@ -19,10 +19,10 @@ pipeline {
     }
     stages {
         stage('Make executable') {
-                agent {
+       //         agent {
   //   label 'podman-cloud'
-    label 'docker-jnlp||docker-bibi-slave'
-   }
+   // label 'docker-jnlp||docker-bibi-slave'
+   // }
             steps {
                 dir("${env.WORKSPACE}/Ch03/03_03-run-scripts-from-the-pipeline"){
  //               sh('chmod +x /scripts/fibonacci.sh')
