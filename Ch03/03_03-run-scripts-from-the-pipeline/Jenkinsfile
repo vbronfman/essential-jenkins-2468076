@@ -22,8 +22,10 @@ pipeline {
     }
     stages {
 stage ('checkout to agent'){
+ steps {
 scm git branch: "main", 
         url: "https://github.com/vbronfman/essential-jenkins-2468076"
+ }
 }
         stage('Make executable') {
 
