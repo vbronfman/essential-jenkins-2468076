@@ -18,13 +18,14 @@ pipeline {
         cron '@midnight'
     }
     stages {
+                        dir("${env.WORKSPACE}/Ch03/03_03-run-scripts-from-the-pipeline"){
+
         stage('Make executable') {
        //         agent {
   //   label 'podman-cloud'
    // label 'docker-jnlp||docker-bibi-slave'
    // }
             steps {
-                dir("${env.WORKSPACE}/Ch03/03_03-run-scripts-from-the-pipeline"){
                     sh '''
                     mkdir scripts && cp ./fibonacci.sh scripts/
                     '''
@@ -32,7 +33,7 @@ pipeline {
                 echo "cwd = $CWD"
                 sh 'printenv'
                                sh('chmod +x ./scripts/fibonacci.sh')
-                }
+                
             }
         }
         stage('Relative path') {
@@ -53,4 +54,5 @@ pipeline {
             }
         }
     }
+    } // dir
 }
