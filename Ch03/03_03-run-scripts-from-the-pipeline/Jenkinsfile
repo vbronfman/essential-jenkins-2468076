@@ -1,6 +1,9 @@
 pipeline {
-    agent any
-    
+ //   agent any
+      agent {
+  //   label 'podman-cloud'
+          label 'docker-jnlp||docker-bibi-slave'
+    } 
     parameters {
         choice(name: 'NUMBER',
             choices: [10,20,30,40,50,60,70,80,90],
@@ -18,12 +21,12 @@ pipeline {
         cron '@midnight'
     }
     stages {
-
+stage ('checkout to agent'){
+scm git branch: "main", 
+        url: "https://github.com/vbronfman/essential-jenkins-2468076"
+}
         stage('Make executable') {
-       //         agent {
-  //   label 'podman-cloud'
-   // label 'docker-jnlp||docker-bibi-slave'
-   // }
+
             steps {
                    dir("${env.WORKSPACE}/Ch03/03_03-run-scripts-from-the-pipeline"){
                    sh '''
