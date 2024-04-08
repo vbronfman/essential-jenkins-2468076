@@ -1,9 +1,9 @@
 pipeline {
  //   agent any
       agent {
-  //   label 'podman-cloud'
+     label 'podman-cloud'
      //     label 'docker-jnlp||docker-bibi-slave'
-       docker {image "public.ecr.aws/docker/library/maven:latest"}
+  //     docker {image "public.ecr.aws/docker/library/maven:latest"}
     } 
     parameters {
         choice(name: 'NUMBER',
