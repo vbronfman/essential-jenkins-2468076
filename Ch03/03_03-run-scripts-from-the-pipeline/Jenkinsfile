@@ -27,7 +27,7 @@ pipeline {
             steps {
                    dir("${env.WORKSPACE}/Ch03/03_03-run-scripts-from-the-pipeline"){
                    sh '''
-                    mkdir scripts && cp ./fibonacci.sh scripts/
+                   // mkdir scripts && cp ./fibonacci.sh scripts/
                     '''
  //               sh('chmod +x /scripts/fibonacci.sh')
                 echo "cwd = $CWD"
