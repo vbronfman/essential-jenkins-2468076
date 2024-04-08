@@ -18,7 +18,6 @@ pipeline {
         cron '@midnight'
     }
     stages {
-                        dir("${env.WORKSPACE}/Ch03/03_03-run-scripts-from-the-pipeline"){
 
         stage('Make executable') {
        //         agent {
@@ -26,7 +25,8 @@ pipeline {
    // label 'docker-jnlp||docker-bibi-slave'
    // }
             steps {
-                    sh '''
+                   dir("${env.WORKSPACE}/Ch03/03_03-run-scripts-from-the-pipeline"){
+                   sh '''
                     mkdir scripts && cp ./fibonacci.sh scripts/
                     '''
  //               sh('chmod +x /scripts/fibonacci.sh')
@@ -34,25 +34,30 @@ pipeline {
                 sh 'printenv'
                                sh('chmod +x ./scripts/fibonacci.sh')
                 
-            }
+            }// dir
+                } 
         }
         stage('Relative path') {
             steps {
+                dir("${env.WORKSPACE}/Ch03/03_03-run-scripts-from-the-pipeline"){
                 sh("./scripts/fibonacci.sh ${env.NUMBER}")
+                } // dir
             }
         }
         stage('Full path') {
             steps {
+                dir("${env.WORKSPACE}/Ch03/03_03-run-scripts-from-the-pipeline"){
                 sh("${env.WORKSPACE}/scripts/fibonacci.sh ${env.NUMBER}")
+                } // dir
             }
         }
         stage('Change directory') {
             steps {
-                dir("${env.WORKSPACE}/scripts"){
+                dir("${env.WORKSPACE}/Ch03/03_03-run-scripts-from-the-pipeline/scripts"){
                     sh("./fibonacci.sh ${env.NUMBER}")
                 }
             }
         }
     }
-    } // dir
+    
 }
