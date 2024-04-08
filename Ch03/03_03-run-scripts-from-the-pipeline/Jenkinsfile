@@ -24,7 +24,7 @@ pipeline {
       stage ('checkout to agent'){
         steps {
                git branch: "main", 
-               url: "https://github.com/vbronfman/essential-jenkins-2468076"
+               url: "https://github.com/vbronfman/essential-jenkins-2468076.git"
          }
         }
         stage('Make executable') {
